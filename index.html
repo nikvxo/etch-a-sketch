@@ -11,19 +11,39 @@
     <div class="container"></div>
     <script>
 
-        //setup initial grid 16x16
-        for (let i = 0; i < 256; i++) {
-            const square = document.createElement('div');
-            square.classList.add('square');
-            document.querySelector('.container').appendChild(square);
+        //custom grid size function
+        function createGrid(size){
+            const container = document.querySelector('.container');
+            container.innerHTML = ''; //clear grid
+            const squareSize = 960 / size; //based on container size 960px
+
+            //loop through and create custom grid
+            for (let i = 0; i < size * size; i++) {
+                const square = document.createElement('div');
+                square.classList.add('square');
+                square.style.width = `${squareSize}px`;
+                square.style.height = `${squareSize}px`;
+                container.appendChild(square);
+            }
+
+            //setup hover effect for new grid 
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => {
+                square.addEventListener('mouseenter', ()  => {
+                    square.style.backgroundColor = 'black';
+                });
+            });
         }
 
-        //setup hover effect
-            const squares = document.querySelectorAll('.square');        
-            squares.forEach(square => {
-            square.addEventListener('mouseenter', () => {
-                square.style.backgroundColor = 'black';
-            });
+        createGrid(16); //default grid size 
+
+        //reset button to clear grid and set new size
+        document.getElementById('reset').addEventListener('click', () => {
+            let size = prompt("Enter a new grid size (max 100): ");
+            if (size != null) {
+                size = Math.min(size, 100); //limit to 100
+                createGrid(size);
+            }
         });
     </script>
 </body>
