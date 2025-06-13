@@ -1,2 +1,10 @@
-Etch-a-sketch tool made using HTML, CSS, and JavaScript. I'm hoping to gain a more 
-complete understanding of these tools and how they work together to create websites that are responsive.
+# Etch-A-Sketch
+
+Etch-a-sketch web application made using HTML, CSS, and JavaScript. 
+
+## Features
+- Drawing feature implemented using mouseover function.
+- Clear/reset button functionality added allowing resizing of the grid.
+
+## Demo 
+[Live Demo](https://nikvxo.github.io/etch-a-sketch/)
